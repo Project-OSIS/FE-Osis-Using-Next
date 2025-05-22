@@ -1,5 +1,6 @@
 // src/app/landingPage/components/TopCreators.tsx
 import Image from 'next/image';
+import Link from 'next/link';
 
 const TopCreators = () => {
   const creators = [
@@ -43,6 +44,7 @@ const TopCreators = () => {
             >
               <div className="flex items-center mb-2">
                 <span className="bg-custom-purple text-white px-2 py-1 rounded">{creator.id}</span>
+                <Link href="../landingPage/anggota/id">
                 <Image
                   src={creator.avatar}
                   alt={creator.name}
@@ -50,6 +52,7 @@ const TopCreators = () => {
                   height={60}
                   className="w-12 h-12 rounded-full ml-2"
                 />
+                </Link>
               </div>
               <h3 className="text-xl font-bold text-white">{creator.name}</h3>
               <p className="text-white">Total Sales: {creator.totalSales}</p>
