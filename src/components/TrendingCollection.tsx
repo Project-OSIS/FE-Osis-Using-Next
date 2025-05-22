@@ -27,7 +27,7 @@ const TrendingCollections = () => {
   ];
 
   return (
-    <section className="bg-custom-dark py-16">
+    <section id="trendingcollection" className="bg-custom-dark py-16">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-white mb-8">Trending Collection</h2>
         <p className="text-white mb-8">

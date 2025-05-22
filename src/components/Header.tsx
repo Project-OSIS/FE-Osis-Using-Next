@@ -17,7 +17,7 @@ const Header = () => {
       </div>
       <nav className="hidden md:flex space-x-8">
         <Link href="#topcreator" className="text-white">Anggota Osis</Link>
-        <Link href="#" className="text-white">Proker</Link>
+        <Link href="#trendingcollection" className="text-white">Proker</Link>
         {/* <button className="bg-custom-cyan-500 hover:bg-custom-cyan-600 text-white px-4 py-2 rounded">Connect a wallet</button>
         <button className="bg-custom-purple hover:bg-custom-purple-700 text-white px-4 py-2 rounded flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 mr-2">
