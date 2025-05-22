@@ -1,5 +1,6 @@
 // src/app/landingPage/components/DiscoverMoreNFTs.tsx
 import Image from 'next/image';
+import Link from 'next/link';
 
 const DiscoverMoreNFTs = () => {
   const nfts = [
@@ -8,14 +9,15 @@ const DiscoverMoreNFTs = () => {
       name: "Distant Galaxy",
       artist: "MoonDancer",
       price: "1.63 ETH",
-      image: "/nft1.jpg",
+      href:"",
+      image: "/Image Placeholder.png",
     },
     {
       id: 2,
       name: "Life On Edena",
       artist: "NebulaKid",
       price: "0.33 wETH",
-      image: "/nft2.jpg",
+      image: "/Image Placeholder.png",
     },
     // ... other NFTs
   ];
@@ -40,7 +42,7 @@ const DiscoverMoreNFTs = () => {
             <div
               key={nft.id}
               className="bg-custom-dark rounded-lg overflow-hidden shadow-lg"
-            >
+            ><Link href="">
               <Image
                 src={nft.image}
                 alt={nft.name}
@@ -48,6 +50,7 @@ const DiscoverMoreNFTs = () => {
                 height={200}
                 className="w-full h-full object-cover"
               />
+              </Link>
               <div className="p-4">
                 <h3 className="text-xl font-bold text-white">{nft.name}</h3>
                 <p className="text-white">{nft.artist}</p>
