@@ -6,12 +6,12 @@ const Categories = () => {
     {
       id: 1,
       name: "Art",
-      icon: "/art-icon.svg",
+      icon: "/Photo & Icon.png",
     },
     {
       id: 2,
       name: "Collectibles",
-      icon: "/collectibles-icon.svg",
+      icon: "/Swatches.png",
     },
     // ... other categories
   ];

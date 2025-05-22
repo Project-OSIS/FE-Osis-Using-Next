@@ -7,19 +7,19 @@ const TopCreators = () => {
       id: 1,
       name: "Keepitreal",
       totalSales: "34.53 ETH",
-      avatar: "/avatar1.jpg",
+      avatar: "/Avatar Placeholder.png",
     },
     {
       id: 2,
       name: "DigiLab",
       totalSales: "34.53 ETH",
-      avatar: "/avatar2.jpg",
+      avatar: "/Avatar Placeholder.png",
     },
     // ... other creators
   ];
 
   return (
-    <section className="bg-custom-dark py-16">
+    <section id="topcreator" className="bg-custom-dark py-16">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>

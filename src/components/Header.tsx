@@ -16,7 +16,7 @@ const Header = () => {
         <h1 className="text-xl font-bold text-white">Osis Bobotsari</h1>
       </div>
       <nav className="hidden md:flex space-x-8">
-        <Link href="#" className="text-white">Anggota Osis</Link>
+        <Link href="#topcreator" className="text-white">Anggota Osis</Link>
         <Link href="#" className="text-white">Proker</Link>
         {/* <button className="bg-custom-cyan-500 hover:bg-custom-cyan-600 text-white px-4 py-2 rounded">Connect a wallet</button>
         <button className="bg-custom-purple hover:bg-custom-purple-700 text-white px-4 py-2 rounded flex items-center">
