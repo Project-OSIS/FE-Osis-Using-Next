@@ -1,6 +1,6 @@
 // src/app/landingPage/components/TrendingCollections.tsx
 import Image from 'next/image';
-
+import Link from 'next/link';
 const TrendingCollections = () => {
   const collections = [
     {
@@ -39,13 +39,15 @@ const TrendingCollections = () => {
               key={collection.id}
               className="bg-custom-dark rounded-lg overflow-hidden shadow-lg"
             >
+              <Link href="./landingPage/proker/id">
+              
               <Image
                 src={collection.image}
                 alt={collection.name}
                 width={300}
                 height={200}
                 className="w-full h-full object-cover"
-              />
+              /></Link>
               <div className="p-4">
                 <h3 className="text-xl font-bold text-white">{collection.name}</h3>
                 <p className="text-white">{collection.artist}</p>
