@@ -44,7 +44,7 @@ return (
         <tr>
           <th className="
             p-4 
-            text-left 
+            text-center 
             w-12
           ">
             <input
@@ -64,6 +64,7 @@ return (
           </th>
           <th className="
             p-4 
+            text-center
             text-sm 
             font-semibold 
             text-custom-cyan-300 
@@ -74,6 +75,7 @@ return (
           </th>
           <th className="
             p-4 
+            text-center
             text-sm 
             font-semibold 
             text-custom-cyan-300 
@@ -84,6 +86,7 @@ return (
           </th>
           <th className="
             p-4 
+            text-center
             text-sm 
             font-semibold 
             text-custom-cyan-300 
@@ -94,6 +97,7 @@ return (
           </th>
           <th className="
             p-4 
+            text-center
             text-sm 
             font-semibold 
             text-custom-cyan-300 
@@ -104,6 +108,7 @@ return (
           </th>
           <th className="
             p-4 
+            text-center
             text-sm 
             font-semibold 
             text-custom-cyan-300 
@@ -132,7 +137,7 @@ return (
               }
             `}
           >
-            <td className="p-4">
+            <td className="p-4 text-center">
               <input
                 type="checkbox"
                 checked={selectedUsers.includes(index)}
@@ -148,10 +153,10 @@ return (
                 "
               />
             </td>
-            <td className="p-4 text-custom-white">{user.username}</td>
-            <td className="p-4 text-custom-cyan-400">{user.role}</td>
-            <td className="p-4 text-custom-white">{user.employeeName}</td>
-            <td className="p-4">
+            <td className="p-4 text-center text-custom-white">{user.username}</td>
+            <td className="p-4 text-center text-custom-cyan-400">{user.role}</td>
+            <td className="p-4 text-center text-custom-white">{user.employeeName}</td>
+            <td className="p-4 text-center">
               <span className={`
                 px-3 
                 py-1 
@@ -166,15 +171,15 @@ return (
                 {user.status}
               </span>
             </td>
-            <td className="p-4">
-              <div className="flex space-x-2">
+            <td className="p-4 text-center">
+              <div className="flex justify-center space-x-2">
                 <button 
                   className="
-                    bg-custom-cyan-600 
+                    bg-yellow-500 
                     text-white 
                     p-2 
                     rounded-lg 
-                    hover:bg-custom-cyan-500 
+                    hover:bg-yellow-400 
                     transition-colors 
                     duration-300
                   "
