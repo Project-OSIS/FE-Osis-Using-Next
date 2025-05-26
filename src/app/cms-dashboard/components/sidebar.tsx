@@ -12,7 +12,7 @@ const menuItems = [
     </svg>
   ),
   label: 'Dashboard',
-  route: '/dashboard'
+  route: '/cms-dashboard'
 },
 { 
   icon: (
