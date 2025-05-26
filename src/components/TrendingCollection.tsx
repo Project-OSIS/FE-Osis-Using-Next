@@ -1,6 +1,6 @@
 // src/app/landingPage/components/TrendingCollections.tsx
 import Image from 'next/image';
-
+import Link from 'next/link';
 const TrendingCollections = () => {
   const collections = [
     {
@@ -27,7 +27,7 @@ const TrendingCollections = () => {
   ];
 
   return (
-    <section className="bg-custom-dark py-16">
+    <section id="trendingcollection" className="bg-custom-dark py-16">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-white mb-8">Trending Collection</h2>
         <p className="text-white mb-8">
@@ -39,13 +39,15 @@ const TrendingCollections = () => {
               key={collection.id}
               className="bg-custom-dark rounded-lg overflow-hidden shadow-lg"
             >
+              <Link href="./landingPage/proker/id">
+              
               <Image
                 src={collection.image}
                 alt={collection.name}
                 width={300}
                 height={200}
                 className="w-full h-full object-cover"
-              />
+              /></Link>
               <div className="p-4">
                 <h3 className="text-xl font-bold text-white">{collection.name}</h3>
                 <p className="text-white">{collection.artist}</p>

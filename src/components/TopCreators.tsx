@@ -1,5 +1,6 @@
 // src/app/landingPage/components/TopCreators.tsx
 import Image from 'next/image';
+import Link from 'next/link';
 
 const TopCreators = () => {
   const creators = [
@@ -7,19 +8,19 @@ const TopCreators = () => {
       id: 1,
       name: "Keepitreal",
       totalSales: "34.53 ETH",
-      avatar: "/avatar1.jpg",
+      avatar: "/Avatar Placeholder.png",
     },
     {
       id: 2,
       name: "DigiLab",
       totalSales: "34.53 ETH",
-      avatar: "/avatar2.jpg",
+      avatar: "/Avatar Placeholder.png",
     },
     // ... other creators
   ];
 
   return (
-    <section className="bg-custom-dark py-16">
+    <section id="topcreator" className="bg-custom-dark py-16">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
@@ -43,6 +44,7 @@ const TopCreators = () => {
             >
               <div className="flex items-center mb-2">
                 <span className="bg-custom-purple text-white px-2 py-1 rounded">{creator.id}</span>
+                <Link href="../landingPage/anggota/id">
                 <Image
                   src={creator.avatar}
                   alt={creator.name}
@@ -50,6 +52,7 @@ const TopCreators = () => {
                   height={60}
                   className="w-12 h-12 rounded-full ml-2"
                 />
+                </Link>
               </div>
               <h3 className="text-xl font-bold text-white">{creator.name}</h3>
               <p className="text-white">Total Sales: {creator.totalSales}</p>
