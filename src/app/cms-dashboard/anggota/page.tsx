@@ -1,9 +1,11 @@
 'use client';
-
 import React, { useState } from 'react';
 import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import UserTable from '../components/userTable';
+import AddUserModal from '../components/addUserModal';
+import EditUserModal from '../components/editUserModal';
+import DeleteUserModal from '../components/deleteUserModal';
 
 // Definisi tipe User
 interface User {
@@ -31,11 +33,9 @@ const initialUsers: User[] = [
 const AnggotaPage = () => {
   // State untuk users
   const [users, setUsers] = useState<User[]>(initialUsers);
-
   // State untuk modal
   const [modalType, setModalType] = useState<'add' | 'edit' | 'delete' | null>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
-
   // State untuk form input
   const [formData, setFormData] = useState<User>({
     username: '',
@@ -93,8 +93,8 @@ const AnggotaPage = () => {
 
   const handleEditUser = () => {
     // Logika edit user
-    setUsers(prev => 
-      prev.map(user => 
+    setUsers(prev =>
+      prev.map(user =>
         user.username === selectedUser?.username ? formData : user
       )
     );
@@ -103,7 +103,7 @@ const AnggotaPage = () => {
 
   const handleDeleteUser = () => {
     // Logika hapus user
-    setUsers(prev => 
+    setUsers(prev =>
       prev.filter(user => user.username !== selectedUser?.username)
     );
     closeModal();
@@ -112,10 +112,8 @@ const AnggotaPage = () => {
   return (
     <div className="flex h-screen bg-custom-dark text-custom-white">
       <Sidebar />
-
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header />
-
         <main className="flex-grow p-8 overflow-y-auto">
           <div className="mb-8 flex justify-between items-center">
             <div>
@@ -126,23 +124,23 @@ const AnggotaPage = () => {
                 Daftar pengguna dan manajemen akses
               </p>
             </div>
-
             <button 
               onClick={openAddModal}
               className="
-              bg-custom-dark/80 
-              border border-custom-cyan-700/50 
-              rounded-2xl 
-              p-6 
-              flex 
-              items-center 
-              space-x-6 
-              transform 
-              hover:scale-105 
-              transition-all 
-              duration-300 
-              hover:shadow-2xl 
-              hover:border-custom-cyan-500/70 
+                bg-custom-dark/80 
+                border 
+                border-custom-cyan-700/50 
+                rounded-2xl 
+                p-6 
+                flex 
+                items-center 
+                space-x-6 
+                transform 
+                hover:scale-105 
+                transition-all 
+                duration-300 
+                hover:shadow-2xl 
+                hover:border-custom-cyan-500/70 
               "
             >
               <svg 
@@ -162,7 +160,6 @@ const AnggotaPage = () => {
               <span>Tambah Anggota</span>
             </button>
           </div>
-
           <div className="
             bg-custom-dark/80 
             border 
@@ -185,288 +182,29 @@ const AnggotaPage = () => {
           </div>
         </main>
       </div>
-
       {/* Modal Overlay */}
-      {modalType && (
-        <div className="
-          fixed 
-          inset-0 
-          bg-black/50 
-          flex 
-          items-center 
-          justify-center 
-          z-50
-        ">
-          <div className="
-            bg-custom-dark 
-            border 
-            border-custom-cyan-700 
-            rounded-2xl 
-            p-8 
-            w-full 
-            max-w-md
-          ">
-            {modalType === 'add' && (
-              <>
-                <h3 className="text-2xl font-bold text-custom-cyan-300 mb-6">
-                  Tambah Anggota Baru
-                </h3>
-                {/* Form tambah anggota */}
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleInputChange}
-                    placeholder="Username"
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      rounded-lg 
-                      p-3 
-                      text-custom-white
-                    "
-                  />
-                  <select
-                    name="role"
-                    value={formData.role}
-                    onChange={handleInputChange}
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      rounded-lg 
-                      p-3 
-                      text-custom-white
-                    "
-                  >
-                    <option value="">Pilih Role</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Employee">Employee</option>
-                  </select>
-                  <input
-                    type="text"
-                    name="employeeName"
-                    value={formData.employeeName}
-                    onChange={handleInputChange}
-                    placeholder="Nama Lengkap"
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      rounded-lg 
-                      p-3 
-                      text-custom-white
-                    "
-                  />
-                  <select
-                    name="status"
-                    value={formData.status}
-                    onChange={handleInputChange}
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      rounded-lg 
-                      p-3 
-                      text-custom-white
-                    "
-                  >
-                    <option value="Enable">Enable</option>
-                    <option value="Disable">Disable</option>
-                  </select>
-                </div>
-                <div className="flex space-x-4 mt-6">
-                  <button 
-                    onClick={handleAddUser}
-                    className="
-                      w-full 
-                      bg-custom-cyan-600 
-                      text-white 
-                      py-3 
-                      rounded-lg 
-                      hover:bg-custom-cyan-500 
-                      transition-colors
-                    "
-                  >
-                    Tambah
-                  </button>
-                  <button 
-                    onClick={closeModal}
-                    className="
-                      w-full 
-                      bg-red-600 
-                      text-white 
-                      py-3 
-                      rounded-lg 
-                      hover:bg-red-500 
-                      transition-colors
-                    "
-                  >
-                    Batal
-                  </button>
-                </div>
-              </>
-            )}
-
-            {modalType === 'edit' && (
-              <>
-                <h3 className="text-2xl font-bold text-custom-cyan-300 mb-6">
-                  Edit Anggota
-                </h3>
-                {/* Form edit anggota */}
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleInputChange}
-                    placeholder="Username"
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      rounded-lg 
-                      p-3 
-                      text-custom-white
-                    "
-                  />
-                  <select
-                    name="role"
-                    value={formData.role}
-                    onChange={handleInputChange}
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      rounded-lg 
-                      p-3 
-                      text-custom-white
-                    "
-                  >
-                    <option value="">Pilih Role</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Employee">Employee</option>
-                  </select>
-                  <input
-                    type="text"
-                    name="employeeName"
-                    value={formData.employeeName}
-                    onChange={handleInputChange}
-                    placeholder="Nama Lengkap"
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      rounded-lg 
-                      p-3 
-                      text-custom-white
-                    "
-                  />
-                  <select
-                    name="status"
-                    value={formData.status}
-                    onChange={handleInputChange}
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      rounded-lg 
-                      p-3 
-                      text-custom-white
-                    "
-                  >
-                    <option value="Enable">Enable</option>
-                    <option value="Disable">Disable</option>
-                  </select>
-                </div>
-                <div className="flex space-x-4 mt-6">
-                  <button 
-                    onClick={handleEditUser}
-                    className="
-                      w-full 
-                      bg-custom-cyan-600 
-                      text-white 
-                      py-3 
-                      rounded-lg 
-                      hover:bg-custom-cyan-500 
-                      transition-colors
-                    "
-                  >
-                    Simpan
-                  </button>
-                  <button 
-                    onClick={closeModal}
-                    className="
-                      w-full 
-                      bg-red-600 
-                      text-white 
-                      py-3 
-                      rounded-lg 
-                      hover:bg-red-500 
-                      transition-colors
-                    "
-                  >
-                    Batal
-                  </button>
-                </div>
-              </>
-            )}
-
-            {modalType === 'delete' && (
-              <>
-                <h3 className="text-2xl font-bold text-red-500 mb-6">
-                  Konfirmasi Hapus Anggota
-                </h3>
-                <p className="text-custom-white mb-6">
-                  Apakah Anda yakin ingin menghapus anggota{' '}
-                  <span className="font-bold">{selectedUser?.username}</span>?
-                </p>
-                <div className="flex space-x-4">
-                  <button 
-                    onClick={handleDeleteUser}
-                    className="
-                      w-full 
-                      bg-red-600 
-                      text-white 
-                      py-3 
-                      rounded-lg 
-                      hover:bg-red-500 
-                      transition-colors
-                    "
-                  >
-                    Hapus
-                  </button>
-                  <button 
-                    onClick={closeModal}
-                    className="
-                      w-full 
-                      bg-custom-dark/80 
-                      border 
-                      border-custom-cyan-700 
-                      text-white 
-                      py-3 
-                      rounded-lg 
-                      hover:bg-custom-dark/50 
-                      transition-colors
-                    "
-                  >
-                    Batal
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
+      {modalType === 'add' && (
+        <AddUserModal
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleAddUser={handleAddUser}
+          closeModal={closeModal}
+        />
+      )}
+      {modalType === 'edit' && (
+        <EditUserModal
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleEditUser={handleEditUser}
+          closeModal={closeModal}
+        />
+      )}
+      {modalType === 'delete' && (
+        <DeleteUserModal
+          selectedUser={selectedUser}
+          handleDeleteUser={handleDeleteUser}
+          closeModal={closeModal}
+        />
       )}
     </div>
   );
