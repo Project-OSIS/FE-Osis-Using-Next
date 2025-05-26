@@ -21,7 +21,7 @@ const menuItems = [
     </svg>
   ),
   label: 'Proker',
-  route: '/proker'
+  route: '/'
 },
 { 
   icon: (
@@ -30,7 +30,7 @@ const menuItems = [
     </svg>
   ),
   label: 'Anggota',
-  route: '/anggota'
+  route: '/cms-dashboard/anggota'
 },
 { 
   icon: (
