@@ -7,6 +7,8 @@ interface DeleteUserModalProps {
 }
 
 const DeleteUserModal: React.FC<DeleteUserModalProps> = ({ selectedUser, handleDeleteUser, closeModal }) => {
+  if (!selectedUser) return null;
+
   return (
     <div
       className="overlay"

@@ -1,13 +1,15 @@
+// src/app/cms-dashboard/components/addUserModal.tsx
 import React from 'react';
 
 interface AddUserModalProps {
   formData: any;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleAddUser: () => void;
   closeModal: () => void;
 }
 
-const AddUserModal: React.FC<AddUserModalProps> = ({ formData, handleInputChange, handleAddUser, closeModal }) => {
+const AddUserModal: React.FC<AddUserModalProps> = ({ formData, handleInputChange, handleImageChange, handleAddUser, closeModal }) => {
   return (
     <div
       className="overlay"
@@ -36,7 +38,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ formData, handleInputChange
           zIndex: 1001,
         }}
       >
-        <h3 className="text-2xl font-bold  text-gray-700 mb-8 text-center">
+        <h3 className="text-2xl font-bold text-gray-700 mb-8 text-center">
           Tambah Anggota Baru
         </h3>
         {/* Form tambah anggota */}
@@ -56,6 +58,34 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ formData, handleInputChange
             />
           </div>
           <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Masukkan Email"
+              className="w-full bg-custom-dark/80 border border-custom-cyan-700 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-custom-cyan-500"
+            />
+          </div>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="Masukkan Password"
+              className="w-full bg-custom-dark/80 border border-custom-cyan-700 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-custom-cyan-500"
+            />
+          </div>
+          <div>
             <label htmlFor="role" className="block text-sm font-medium text-gray-700">
               Role
             </label>
@@ -67,8 +97,9 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ formData, handleInputChange
               className="w-full bg-custom-dark/80 border border-custom-cyan-700 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-custom-cyan-500"
             >
               <option value="">Pilih Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Employee">Employee</option>
+              <option value="ADMIN">Admin</option>
+              <option value="PEMBINA">Pembina Osis</option>
+              <option value="ANGGOTA">Anggota</option>
             </select>
           </div>
           <div>
@@ -96,9 +127,21 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ formData, handleInputChange
               onChange={handleInputChange}
               className="w-full bg-custom-dark/80 border border-custom-cyan-700 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-custom-cyan-500"
             >
-              <option value="Enable">Enable</option>
-              <option value="Disable">Disable</option>
+              <option value="ENABLE">Enable</option>
+              <option value="DISABLE">Disable</option>
             </select>
+          </div>
+          <div>
+            <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+              Image
+            </label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              onChange={handleImageChange}
+              className="w-full bg-custom-dark/80 border border-custom-cyan-700 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-custom-cyan-500"
+            />
           </div>
         </form>
         <div className="flex space-x-4 mt-8">
