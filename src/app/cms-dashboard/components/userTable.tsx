@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface User {
+  id: string;
   username: string;
+  email: string;
   role: string;
   employeeName: string;
   status: string;
+  image: File | string | null;
+  createdAt: string;
+  updatedAt: string;
+  password?: string; // Tambahkan properti password jika diperlukan
 }
 
 interface UserTableProps {
@@ -21,7 +27,6 @@ const UserTable = ({
   onDelete = () => {} 
 }: UserTableProps) => {
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
-
   const toggleUserSelection = (index: number) => {
     setSelectedUsers(prev => 
       prev.includes(index) 
@@ -29,17 +34,14 @@ const UserTable = ({
         : [...prev, index]
     );
   };
-
   const isAllSelected = selectedUsers.length === users.length;
   const toggleSelectAll = () => {
     setSelectedUsers(isAllSelected ? [] : users.map((_, idx) => idx));
   };
-
   const handleBulkDelete = () => {
     // Implementasi bulk delete (opsional, bisa disesuaikan dengan kebutuhan)
     console.log('Selected users to delete:', selectedUsers);
   };
-
   return (
     <div className={`
       w-full 
@@ -96,6 +98,7 @@ const UserTable = ({
             ">
               User Role
             </th>
+         
             <th className="
               p-4 
               text-center
@@ -105,7 +108,7 @@ const UserTable = ({
               uppercase 
               tracking-wider
             ">
-              Employee Name
+              Email
             </th>
             <th className="
               p-4 
@@ -131,7 +134,6 @@ const UserTable = ({
             </th>
           </tr>
         </thead>
-
         {/* Konten Tabel */}
         <tbody>
           {users.map((user, index) => (
@@ -168,6 +170,7 @@ const UserTable = ({
               <td className="p-4 text-center text-custom-white">{user.username}</td>
               <td className="p-4 text-center text-custom-cyan-400">{user.role}</td>
               <td className="p-4 text-center text-custom-white">{user.employeeName}</td>
+              <td className="p-4 text-center text-custom-white">{user.email}</td>
               <td className="p-4 text-center">
                 <span className={`
                   px-3 
@@ -175,7 +178,7 @@ const UserTable = ({
                   rounded-full 
                   text-xs 
                   font-semibold 
-                  ${user.status === 'Enable' 
+                  ${user.status === 'ENABLE' 
                     ? 'bg-green-500/20 text-green-400' 
                     : 'bg-red-500/20 text-red-400'
                   }
@@ -247,7 +250,6 @@ const UserTable = ({
           ))}
         </tbody>
       </table>
-
       {/* Informasi Jumlah Terpilih */}
       {selectedUsers.length > 0 && (
         <div className="
